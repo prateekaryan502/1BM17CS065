@@ -2,7 +2,6 @@ def binarysearch(arr,l,h,k):
     mid=(l+h)//2
     x=arr[mid]
     if l<h :
-        print("h")
         if x==k:
              return 1
        
