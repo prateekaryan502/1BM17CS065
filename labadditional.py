@@ -1,18 +1,18 @@
 def binarysearch(arr,l,h,k):
     mid=(l+h)//2
     x=arr[mid]
-    while(l<h):
+    if l<h :
         print("h")
         if x==k:
              return 1
-             break
+       
         elif k>x:
             l=mid+1
-            binarysearch(arr,l,h,k)
+            return binarysearch(arr,l,h,k)
         else :
             h=mid-1
-            binarysearch(arr,l,h,k)
-    if(l>=h):
+            return binarysearch(arr,l,h,k)
+    else :
         return -1
 
 if __name__ == "__main__":
@@ -22,6 +22,6 @@ if __name__ == "__main__":
     arr=[1,2,3,4,0]
     l=0
     h=4
-    k=4
+    k=9
     ans=binarysearch(arr,l,h,k)
     print(ans)
