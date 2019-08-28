@@ -1,35 +1,36 @@
-#our aim is to sort the elements of the array
-#we are following divide and conquer strategy to do this
-#we are dividing array into smaller lists and then sorting the list
-#merge
-
-def merge(l,mid,h):
-    i,j,k=0,0,0
-    while(i<=m and j<=n):
-        if (l1[i]<l2[j]):
-            l3[k]=l1[i]
+def merge(a,l,mid,h):
+    i,j,k=l,mid+1,l
+    while(i<=mid and j<=h):
+        if (a[i]<a[j]):
+            temp[k]=a[i]
             k+=1
             i+=1
         else :
-            l3[k]=l2[j]
+            temp[k]=a[j]
             k+=1
             j+=1
-    while(i<=m):
-        l3[k]=l1[i]
+    while(i<=mid):
+        temp[k]=a[i]
         k+=1
-    while(j<=n):
-        l3[k]=l2[j]
+        i+=1
+    while(j<=h):
+        temp[k]=a[j]
         k+=1
-    return l1
-def mergesort(l,h):
+        j+=1
+    for i in range(l,h+1):
+        a[i]=temp[i]
+
+def mergesort(a,l,h):
     if(l<h):
         mid=(l+h)//2
-        mergesort(l,mid)
-        mergesort(l,mid)
-        merge(l,mid,h)
+        mergesort(a,l,mid)
+        mergesort(a,mid+1,h)
+        merge(a,l,mid,h)
 
-l1=[1,2,4]
-l2=[4,6,7]
-l3=mergesort(l1,l2)
-print(l3)
 
+
+a=[5,6,2,3,4,22,43,1]
+temp=[0]*(len(a))
+print(a)
+mergesort(a,0,len(a)-1)
+print(a)
